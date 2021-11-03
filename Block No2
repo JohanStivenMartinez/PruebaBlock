@@ -1,1 +1,37 @@
 
+pragma solidity > 0.6.1 < 0.7.0;
+
+contract Audiovisual {
+    
+    //se crean variables principales
+    address private jugador;
+    address owner;
+    uint premio;
+    uint anoAleatorio;
+    
+    //se crean los eventos a mostrar en
+    
+    event Numero(string, uint randonumber, string, uint anoAdivinado, string, uint premio);
+   
+    //se crea la funcion de adivinar el numero
+    function adivina(uint numeroAdivinado) public {
+        //el sistema adivinara un numero entre 1 a 6
+        uint randonumber = uint(keccak256(abi.encodePacked(now,msg.sender))) % 6 + 1;
+        
+        //compara si el numero adivinado es el mismo que el que ingresa el juador
+        if(numeroAdivinado == randonumber){
+            //Jugador ingresa el numero
+            jugador = msg.sender;
+            //Si el numero es el mismo al generado gana 1 ether
+            premio = 1000000000000000; //premio
+            //Muestra los resultados en la consola
+                emit Numero("El numero generado es:", randonumber, "El numero que escogiste es:", numeroAdivinado, "Ganaste:", premio);
+
+        }
+        else{
+            
+            
+            }
+        }
+
+}
