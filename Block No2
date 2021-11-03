@@ -1,4 +1,3 @@
-
 pragma solidity > 0.6.1 < 0.7.0;
 
 contract Audiovisual {
@@ -8,10 +7,13 @@ contract Audiovisual {
     address owner;
     uint premio;
     uint anoAleatorio;
+    string public caraDado;
     
     //se crean los eventos a mostrar en
     
     event Numero(string, uint randonumber, string, uint anoAdivinado, string, uint premio);
+    
+    
    
     //se crea la funcion de adivinar el numero
     function adivina(uint numeroAdivinado) public {
@@ -29,9 +31,8 @@ contract Audiovisual {
 
         }
         else{
-            
-            
+            caraDado="No es la cara del dado, vuelve a intenarlo";
             }
         }
 
-}
+    }
